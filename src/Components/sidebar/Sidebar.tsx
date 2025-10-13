@@ -18,7 +18,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setActivePage }) => {
     { icon: "/images/people.png", label: "All Websites", path: "/websites" },
     { icon: "/images/location.png", label: "Trending Topics", path: "/trending" },
     { icon: "/images/upcoming.png", label: "Upcoming Modules", path: "/upcoming" },
-    { icon: "/images/people.png", label: "All Employees", path: "/employees" },
+    { icon: "/images/people.png", label: "All Employees", path: "/all-employees" },
     { icon: "/images/community.png", label: "All Departments", path: "/departments" },
     { icon: "/images/calendar-check.png", label: "Attendance", path: "/attendance" },
     { icon: "/images/coin-dollar.png", label: "Payroll", path: "/payroll" },

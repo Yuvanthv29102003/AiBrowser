@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import Topbar from "./Components/layout/Topbar";
 import UserProfile from "./Pages/user/UserProfile";
 import Sidebar from "./Components/sidebar/Sidebar";
 import AllUsers from "./Pages/allusers/AllUsers";
+import AllEmployees from "./Pages/AllEmployees/AllEmployees";
 
 const AppContent: React.FC = () => {
-  const [activePage, setActivePage] = useState("All Users");
+  const [, setActivePage] = useState("All Users");
   const location = useLocation();
 
   // Update active page based on route
@@ -32,6 +32,7 @@ const AppContent: React.FC = () => {
         <Routes>
           <Route path="/" element={<AllUsers />} />
           <Route path="/users/:userId" element={<UserProfile />} />
+          <Route path="/all-employees" element={<AllEmployees/>}/>
         </Routes>
       </div>
     </div>

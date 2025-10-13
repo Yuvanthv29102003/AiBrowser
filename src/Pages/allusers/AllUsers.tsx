@@ -18,7 +18,7 @@ const AllUsers: React.FC<AllUsersProps> = ({ onMount }) => {
     if (onMount) onMount();
   }, [onMount]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeFilter, setActiveFilter] = useState<UserStatus | 'all'>('all');
+  const [activeFilter] = useState<UserStatus | 'all'>('all');
   const [currentPage, setCurrentPage] = useState(1);
   
   const columns: TableColumn<User>[] = useMemo(() => [
