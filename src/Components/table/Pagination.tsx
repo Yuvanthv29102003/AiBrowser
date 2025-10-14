@@ -37,7 +37,7 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <div className="flex items-center justify-between px-2 py-2 bg-white w-full h-full">
+    <div className="flex items-center justify-between px-5 py-2 bg-white w-full h-full">
       {/* Left: Number of users with square border */}
       <div className="flex items-center pl-4">
         <span className="text-sm text-[#A2A1A8] mr-2">Showing</span>

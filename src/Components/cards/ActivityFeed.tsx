@@ -5,6 +5,8 @@ export interface ActivityItem {
   date: string;
   website: string;
   status: 'Completed' | 'In Progress' | 'Failed';
+  name: string;
+  image: string;
 }
 
 interface ActivityFeedProps {
@@ -17,11 +19,11 @@ const statusStyles = 'bg-[#F45B691A] text-[#F45B69] rounded-[4px]';
 const ActivityFeed: React.FC<ActivityFeedProps> = ({ title, activities }) => {
   return (
     <div className="bg-white rounded-xl shadow-sm overflow-hidden w-full h-full">
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto w-full h-full">
         <table className="w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-8 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Date
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -47,7 +49,7 @@ const ActivityFeed: React.FC<ActivityFeedProps> = ({ title, activities }) => {
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center w-[518px] h-[44px] gap-2.5 py-2.5 bg-white rounded-md">
                     <div className="w-5 h-5 flex items-center justify-center">
-                      <img src="/images/figma.png" alt="" className="w-4 h-4" />
+                      <img src={activity.image} alt="" className="w-4 h-4" />
                     </div>
                     <div className="flex items-center gap-1 text-sm">
                       <span className="font-medium text-[#16151C]">Untitled</span>

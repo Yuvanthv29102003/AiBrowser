@@ -8,7 +8,7 @@ import type { ActivityItem } from '../../Components/cards/ActivityFeed';
 import ActivityFeed from '../../Components/cards/ActivityFeed';
 import Pagination from '../../Components/table/Pagination';
 
-interface DownloadsProps {
+interface BookmarksProps {
   onMount?: () => void;
 }
 
@@ -20,12 +20,12 @@ interface UserData {
   avatar: string;
 }
 
-const Downloads: React.FC<DownloadsProps> = () => {
+const Bookmarks: React.FC<BookmarksProps> = () => {
   const { userId = '1' } = useParams<{ userId: string }>();
   const navigate = useNavigate();
   // Initialize activePage from URL or default to 'All Users'
   const [activePage, setActivePage] = useState('All Users');
-  const [activeTab, setActiveTab] = useState('download');
+  const [activeTab, setActiveTab] = useState('bookmarks');
   const [currentPage, setCurrentPage] = useState(1);
   
   // Update URL when activePage changes
@@ -95,7 +95,7 @@ const Downloads: React.FC<DownloadsProps> = () => {
         {/* <div className="w-full h-full border-2 border-[#A2A1A833] rounded-lg p-4 px-0"> */}
 
           {/* Inner square container */}
-          <div className="relative left-1 w-full  border-2 border-[#A2A1A833] rounded">
+          <div className="relative left-1 w-full  border-2 border-[#A2A1A833] rounded-[10px]">
             {/* Profile Card */}
             <div className="flex justify-between items-center p-4 border-b border-gray-200">
                 <div className="flex items-center gap-4">
@@ -127,10 +127,10 @@ const Downloads: React.FC<DownloadsProps> = () => {
               </div>
 
               {/* Sidebar + Activity List */}
-              <div className="flex flex-row p-6 border border-[#A2A1A833]">
+              <div className="flex flex-row p-6">
                 {/* Profile Sidebar */}
                 <div className="w-[242px] h-[280px] pr-6 border-[#A2A1A833]">
-                  <div className="flex flex-col bg-white rounded-md border border-gray-200 overflow-hidden">
+                  <div className="flex flex-col bg-[#FFFFFF] rounded-[10px] border border-[#A2A1A833] overflow-hidden">
                     {[
                       { id: 'profile', label: 'Profile', icon: '/images/person.png' },
                       { id: 'activity', label: 'Daily Activity', icon: '/images/calendar-check.png' },
@@ -144,7 +144,7 @@ const Downloads: React.FC<DownloadsProps> = () => {
                           if (item.id === 'activity') {
                             navigate(`/users/${userId}`);
                           } else if (item.id === 'download') {
-                            navigate(`/users/${userId}?tab=download`);
+                            navigate(`/users/${userId}/downloads`);
                           } else if (item.id === 'bookmarks') {
                             navigate(`/users/${userId}/bookmarks`);
                           } else if (item.id === 'profile') {
@@ -164,7 +164,7 @@ const Downloads: React.FC<DownloadsProps> = () => {
                         <img 
                           src={item.icon} 
                           alt={item.label} 
-                           className={`w-6 h-6 ${activeTab === item.id ? 'brightness-0 invert' : 'brightness-0'}`}  
+                          className={`w-6 h-6 ${activeTab === item.id ? 'brightness-0 invert' : 'brightness-0'}`}  
                         />
                         {item.label}
                       </button>
@@ -213,7 +213,7 @@ const Downloads: React.FC<DownloadsProps> = () => {
                                 onClick={() => console.log('Edit', item.id)}
                                 className="w-8 h-8 flex items-center justify-center rounded hover:bg-gray-100 transition"
                               >
-                                <img src="/images/edit.png" alt="Edit" className="w-4 h-4" />
+                                <img src="/images/star.png" alt="Edit" className="w-4 h-4" />
                               </button>
                               <button
                                 onClick={() => console.log('Delete', item.id)}
@@ -230,8 +230,7 @@ const Downloads: React.FC<DownloadsProps> = () => {
                 )}
               </div>
               </div>
-          </div>
-          {/* Pagination BELOW inner div and ABOVE outer div end */}
+              {/* Pagination BELOW inner div and ABOVE outer div end */}
           <div className="border-gray-200">
                   <Pagination
                     currentPage={currentPage}
@@ -241,10 +240,11 @@ const Downloads: React.FC<DownloadsProps> = () => {
                     onPageChange={setCurrentPage}
                   />
           </div>
+          </div>
         {/* </div> */}
       </div>
     </>
   );
 };
 
-export default Downloads;
+export default Bookmarks;

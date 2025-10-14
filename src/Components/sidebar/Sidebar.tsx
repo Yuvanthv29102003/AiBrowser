@@ -5,9 +5,10 @@ import ThemeToggle from "./ThemeToggle";
 
 interface SidebarProps {
   setActivePage: (page: string) => void;
+  activePage: string;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ setActivePage }) => {
+const Sidebar: React.FC<SidebarProps> = ({ setActivePage, activePage }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isDarkMode, setIsDarkMode] = React.useState(false);

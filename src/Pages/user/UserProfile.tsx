@@ -1,175 +1,3 @@
-// import React, { useState } from 'react';
-// import { useParams, useNavigate } from 'react-router-dom';
-// import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-// import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
-// import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-// import Topbar from '../../Components/layout/Topbar';
-// import Sidebar from '../../Components/sidebar/Sidebar';
-// import ProfileSidebar from '../../Components/sidebar/ProfileSidebar';
-// import { ActivityItem } from '../../Components/cards/ActivityFeed';
-// import ActivityFeed from '../../Components/cards/ActivityFeed';
-// import Pagination from '../../Components/table/Pagination';
-
-// interface UserProfileProps {
-//   onMount?: () => void;
-// }
-
-// interface UserData {
-//   id: string;
-//   name: string;
-//   email: string;
-//   gender: string;
-//   avatar: string;
-// }
-
-// const UserProfile: React.FC<UserProfileProps> = () => {
-//   const { userId = '1' } = useParams<{ userId: string }>();
-//   const navigate = useNavigate();
-//   const [activePage, setActivePage] = useState('user-profile');
-//   const [activeTab, setActiveTab] = useState('profile');
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const itemsPerPage = 5; // Number of activities per page
-
-//   // Mock user data - in a real app, this would come from an API
-//   const user: UserData = {
-//     id: userId,
-//     name: 'Robert Allen',
-//     email: 'robert.allen@example.com',
-//     gender: 'Male',
-//     avatar: '/images/profile.png'
-//   };
-
-//   const handleEditProfile = () => {
-//     // Handle edit profile action
-//     console.log('Edit profile clicked');
-//   };
-
-//   // Sample activities data
-//   const allActivities: ActivityItem[] = [
-//     {
-//       id: 1,
-//       date: '2025-10-08',
-//       website: 'example.com',
-//       status: 'Completed'
-//     },
-//     {
-//       id: 2,
-//       date: '2025-10-08',
-//       website: 'api.example.org',
-//       status: 'In Progress'
-//     },
-//     {
-//       id: 3,
-//       date: '2025-10-07',
-//       website: 'test-site.com',
-//       status: 'Failed'
-//     },
-//     {
-//       id: 4,
-//       date: '2025-10-07',
-//       website: 'data-warehouse.net',
-//       status: 'Completed'
-//     },
-//     {
-//       id: 5,
-//       date: '2025-10-06',
-//       website: 'monitor.example.io',
-//       status: 'Completed'
-//     },
-//     {
-//       id: 6,
-//       date: '2025-10-06',
-//       website: 'backup.cloud',
-//       status: 'In Progress'
-//     }
-//   ];
-
-//   // Calculate pagination
-//   const totalItems = allActivities.length;
-//   const totalPages = Math.ceil(totalItems / itemsPerPage);
-//   const startIndex = (currentPage - 1) * itemsPerPage;
-//   const paginatedActivities = allActivities.slice(startIndex, startIndex + itemsPerPage);
-
-//   return (
-//     <div className="flex h-screen">
-//       {/* Sidebar */}
-//       <Sidebar activePage={activePage} setActivePage={setActivePage} />
-      
-//       {/* Main Content */}
-//       <div className="flex-1 flex flex-col">
-//         {/* Topbar */}
-//         <Topbar 
-//           title={
-//             <div className="font-['Lexend'] font-light text-[16px] leading-6 text-[#16151C]">
-//               {user.name}'s Profile
-//             </div>
-//           }
-//           subtitle="View and manage user details"
-//           subtitleClassName="text-[14px] leading-5 text-[#A2A1A8] font-light"
-//         />
-
-//         {/* Main Content */}
-//         <main className="flex-1 border border-[#A2A1A833] w-full h-full overflow-y-auto p-4">
-//           <div className="w-full max-w-[1980px] mx-auto relative">
-//             {/* Outer border container */}
-//             <div className="border border-gray-300 absolute left-32 rounded-md bg-white ">
-//               {/* Inner content container */}
-//               <div className="ml-8">
-//               {/* Profile Card with border */}
-//               <div className="p-8 border-b border-gray-200">
-//                 <ProfileCard 
-//                   name={user.name}
-//                   email={user.email}
-//                   gender={user.gender}
-//                   avatar={user.avatar}
-//                   onEditProfile={handleEditProfile}
-//                 />
-//               </div>
-              
-//               {/* Combined Sidebar and Activity Feed with border */}
-//               <div className="flex flex-row p-6 gap-6 border-b border-gray-200">
-//                 {/* Profile Sidebar with border */}
-//                 <div className="w-64 flex-shrink-0 pr-6 border-r border-gray-200">
-//                   <ProfileSidebar 
-//                     activeTab={activeTab} 
-//                     onTabChange={setActiveTab} 
-//                   />
-//                 </div>
-                
-//                 {/* Activity Feed with border */}
-//                 <div className="flex-1">
-//                   <div className="w-full">
-//                     <ActivityFeed 
-//                       activities={paginatedActivities}
-//                     />
-//                   </div>
-//                 </div>
-//               </div>
-//               </div>
-
-//               {/* Full width pagination */}
-//               <div className="px-4 pb-6 ml-8">
-//                 <div className="bg-white rounded-md p-2">
-//                   <Pagination
-//                     currentPage={currentPage}
-//                     totalPages={totalPages}
-//                     onPageChange={setCurrentPage}
-//                     totalItems={totalItems}
-//                     itemsPerPage={itemsPerPage}
-//                   />
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </main>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default UserProfile;
-
-
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Topbar from '../../Components/layout/Topbar';
@@ -230,16 +58,56 @@ const UserProfile: React.FC<UserProfileProps> = () => {
   };
 
   const allActivities: ActivityItem[] = [
-    { id: 1, date: '2025-07-01', website: 'figma.com', status: 'Completed' },
-    { id: 2, date: '2025-07-01', website: 'figma.com', status: 'In Progress' },
-    { id: 3, date: '2025-07-02', website: 'figma.com', status: 'Failed' },
-    { id: 4, date: '2025-07-02', website: 'figma.com', status: 'Completed' },
-    { id: 5, date: '2025-07-03', website: 'figma.com', status: 'Completed' },
-    { id: 6, date: '2025-07-03', website: 'figma.com', status: 'In Progress' },
-    { id: 7, date: '2025-07-04', website: 'figma.com', status: 'Completed' },
-    { id: 8, date: '2025-07-04', website: 'figma.com', status: 'In Progress' },
-    { id: 9, date: '2025-07-05', website: 'figma.com', status: 'Failed' },
-    { id: 10, date: '2025-07-05', website: 'figma.com', status: 'Completed' },
+    {
+      id: 1, date: '2025-07-01', website: 'figma.com', status: 'Completed',
+      name: 'Figma',
+      image: '/images/figma.png'
+    },
+    {
+      id: 2, date: '2025-07-01', website: 'figma.com', status: 'In Progress',
+      name: 'Figma',
+      image: '/images/figma.png'
+    },
+    {
+      id: 3, date: '2025-07-02', website: 'figma.com', status: 'Failed',
+      name: 'Figma',
+      image: '/images/figma.png'
+    },
+    {
+      id: 4, date: '2025-07-02', website: 'figma.com', status: 'Completed',
+      name: 'Figma',
+      image: '/images/figma.png'
+    },
+    {
+      id: 5, date: '2025-07-03', website: 'figma.com', status: 'Completed',
+      name: 'Figma',
+      image: '/images/figma.png'
+    },
+    {
+      id: 6, date: '2025-07-03', website: 'figma.com', status: 'In Progress',
+      name: 'Figma',
+      image: '/images/figma.png'
+    },
+    {
+      id: 7, date: '2025-07-04', website: 'figma.com', status: 'Completed',
+      name: 'Figma',
+      image: '/images/figma.png'
+    },
+    {
+      id: 8, date: '2025-07-04', website: 'figma.com', status: 'In Progress',
+      name: 'Figma',
+      image: '/images/figma.png'
+    },
+    {
+      id: 9, date: '2025-07-05', website: 'figma.com', status: 'Failed',
+      name: 'Figma',
+      image: '/images/figma.png'
+    },
+    {
+      id: 10, date: '2025-07-05', website: 'figma.com', status: 'Completed',
+      name: 'Figma',
+      image: '/images/figma.png'
+    },
   ];
 
     const totalPages = 4; // static 4 pages for now
@@ -312,7 +180,19 @@ const UserProfile: React.FC<UserProfileProps> = () => {
                     ].map((item) => (
                       <button
                         key={item.id}
-                        onClick={() => setActiveTab(item.id)}
+                        onClick={() => {
+                          if (item.id === 'download') {
+                            navigate(`/users/${userId}/downloads`);
+                          } else if (item.id === 'bookmarks') {
+                            navigate(`/users/${userId}/bookmarks`);
+                          } else if (item.id === 'profile') {
+                            navigate(`/users/${userId}/profile`);
+                          } else if (item.id === 'dashboard') {
+                            navigate(`/users/${userId}/dashboard`);
+                          } else {
+                            setActiveTab(item.id);
+                          }
+                        }}
                         className={`flex items-center gap-3 px-4 py-3 transition
                           ${activeTab === item.id 
                             ? 'bg-[#7152F3] text-white rounded-[10px]' 
@@ -322,7 +202,7 @@ const UserProfile: React.FC<UserProfileProps> = () => {
                         <img 
                           src={item.icon} 
                           alt={item.label} 
-                          className={`w-6 h-6 ${activeTab === item.id ? 'invert' : 'opacity-60'}`} 
+                          className={`w-6 h-6 ${activeTab === item.id ? 'brightness-0 invert' : 'brightness-0'}`} 
                         />
                         {item.label}
                       </button>
@@ -350,9 +230,9 @@ const UserProfile: React.FC<UserProfileProps> = () => {
                       <tr key={item.id} className="border-b border-t hover:bg-gray-50">
                         <td className="px-2 py-3 font-['Lexend'] font-light text-base leading-6 text-[#16151C] tracking-normal">{formatDate(item.date)}</td>
                         <td className="px-2 py-3 flex gap-[20px]">
-                          <img src="/images/figma.png" alt="" className="w-5 h-5" />
+                          <img src={item.image} alt="" className="w-5 h-5" />
                           <span className="font-medium text-[#7A5AF8] cursor-pointer">
-                            Figma
+                            {item.name}
                           </span>{' '}
                           - {item.website}
                         </td>

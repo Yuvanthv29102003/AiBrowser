@@ -8,7 +8,7 @@ interface TopbarProps {
 
 const Topbar: React.FC<TopbarProps> = ({ title, subtitle }) => {
   return (
-    <div className="flex items-center justify-between p-10 bg-white border-gray-200">
+    <div className="flex items-center justify-between p-4 pb-9 bg-white border-gray-200">
       {/* Left: Title and Subtitle */}
       <div>
         <h1 className="text-2xl font-semibold text-black">{title}</h1>
